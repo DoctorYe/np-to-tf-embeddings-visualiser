@@ -60,9 +60,9 @@ def save_embeddings(images_features_labels, save_dir):
         embedding = config.embeddings.add()
         embedding.tensor_name = embedding_var.name
         if labs is not None:
-            embedding.metadata_path = metadata_path
+            embedding.metadata_path = os.path.dirname(metadata_path)
         if ims is not None:
-            embedding.sprite.image_path = sprites_path
+            embedding.sprite.image_path = os.path.dirname(sprites_path)
             embedding.sprite.single_image_dim.extend(ims[0].shape)
     
         # Save the embeddings
